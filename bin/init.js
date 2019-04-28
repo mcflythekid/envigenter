@@ -14,6 +14,12 @@ const runHygenEnvigenter = (path, action)=>{
     }
 }
 
+const installHygenAddPlugin = (repo)=>{
+    if (!fs.existsSync('_templates/envigenter')){
+        exec(`hygen-add ${repo} --name envigenter`)
+    }
+}
+
 const defaultInstaller = (obj=>{
     const installProfile = profile=>{
         runHygenEnvigenter(`env/${profile}.env.yml`, `profile --profile ${profile}`)
@@ -52,7 +58,7 @@ const extraInstaller = (obj=>{
     
 module.exports = (initType, profile)=>{
     installGlobalPackage('hygen hygen-add cross-env')
-    exec('hygen-add envigenter')
+    installHygenAddPlugin('https://github.com/mcflythekid/envigenter')
     defaultInstaller.install(profile)
     if (initType === 'extra'){
         extraInstaller.install(profile)
