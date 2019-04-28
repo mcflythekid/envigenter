@@ -1,6 +1,6 @@
 {
   "name": "envigenter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate environment for project",
   "main": "index.js",
   "repository": "git@github.com:mcflythekid/envigenter.git",
@@ -14,9 +14,9 @@
     "yargs-parser": "^13.0.0"
   },
   "bin": {
-    "envigenter": "node ./bin/entry.js"
+    "envigenter": "./bin/entry.js"
   },
-  "scripts":{
+  "scripts": {
     "clean": "node ./bin/clean.js",
     "envigenter": "node ./bin/entry.js"
   }
