@@ -14,10 +14,10 @@
     "yargs-parser": "^13.0.0"
   },
   "bin": {
-    "envigenter": "node bin/entry.js"
+    "envigenter": "node ./bin/entry.js"
   },
   "scripts":{
-    "clean": "node bin/clean.js",
-    "envigenter": "node bin/entry.js"
+    "clean": "node ./bin/clean.js",
+    "envigenter": "node ./bin/entry.js"
   }
 }

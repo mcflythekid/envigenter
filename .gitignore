@@ -6,3 +6,5 @@
 /_templates/env
 
 /tmp
+
+yarn-error.log
