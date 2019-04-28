@@ -15,6 +15,9 @@ const runHygenEnvigenter = (path, action)=>{
 }
 
 const installHygenAddPlugin = (package)=>{
+    if (!fs.existsSync('_templates')){
+        exec('hygen init self')
+    }
     if (!fs.existsSync('_templates/envigenter')){
         exec(`hygen-add ${package} --name envigenter`)
     }
