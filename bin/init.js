@@ -1,15 +1,5 @@
-const { exec } = require('./lib')
-const shell = require('shelljs')
-const fs   = require('fs')
-const yargs = require('yargs-parser')
-
-const installGlobalPackage = packages=>{
-    yargs(packages)._.forEach(package=>{
-        if (!shell.which(package)){
-            exec(`npm i ${package} -g`)
-        }
-    })
-}
+const { exec, installGlobalPackage } = require('./lib')
+const fs = require('fs')
 
 const runHygenEnvigentor = (path, action)=>{
     const notExists = path=>{

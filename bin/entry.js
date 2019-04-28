@@ -2,7 +2,7 @@
 
 const yargs = require('yargs-parser')
 const init = require('./init')
-//const generate = require('./generate')
+const generate = require('./generate')
 
 const { _ } = yargs(process.argv.slice(2))
 const [ initType, profile ] = _
@@ -15,7 +15,7 @@ const help = ()=>{
 
 switch(_.length){
     case 1:
-        generate(profile)
+        generate(_[0])
         break
     case 2:
         if (['new', 'extra'].indexOf(initType) >= 0){

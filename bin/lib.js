@@ -1,6 +1,21 @@
 const _ = require('lodash')
 const shell = require('shelljs')
+const yargs = require('yargs-parser')
 
+/**
+ * Install package globally
+ */
+exports.installGlobalPackage = packages=>{
+    yargs(packages)._.forEach(package=>{
+        if (!shell.which(package)){
+            exec(`npm i ${package} -g`)
+        }
+    })
+}
+
+/**
+ * Execute shell command, exit process if has error
+ */
 exports.exec = cmd=>{
     console.log(`Executing: '${cmd}'`)
     const code = shell.exec(cmd).code
@@ -10,9 +25,11 @@ exports.exec = cmd=>{
     }
 }
 
-
+/**
+ * Convert object to array
+ * {a: {b: 'c'}} => [{key: 'a.b', val: 'c'}]
+ */
 exports.extractObject = (obj) =>{
-
     function findPropPaths(obj, predicate) {  // The function 
         const discoveredObjects = []; // For checking for cyclic object
         const path = [];    // The current path being searched
@@ -50,8 +67,6 @@ exports.extractObject = (obj) =>{
         })
     }
 
-
-
     let x = []
     let keyStrings = findAllSub(obj)
     keyStrings.forEach(path=>{
@@ -62,6 +77,3 @@ exports.extractObject = (obj) =>{
     })
     return x
 }
-
-
-
