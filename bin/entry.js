@@ -8,9 +8,9 @@ const { _ } = yargs(process.argv.slice(2))
 const [ initType, profile ] = _
 
 const help = ()=>{
-    console.log(`Create new profile:       $ envigentor new   <profile>`)
-    console.log(`Create new extra profile: $ envigentor extra <profile>`)
-    console.log('Execute a profile:        $ envigentor <profile>')
+    console.log(`Create new profile:       $ envigenter new   <profile>`)
+    console.log(`Create new extra profile: $ envigenter extra <profile>`)
+    console.log('Execute a profile:        $ envigenter <profile>')
 }
 
 switch(_.length){

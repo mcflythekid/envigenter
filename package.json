@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Generate environment for project",
   "main": "index.js",
-  "repository": "git@github.com:mcflythekid/envigentor.git",
+  "repository": "git@github.com:mcflythekid/envigenter.git",
   "author": "McFly the Kid <odopoc@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -14,10 +14,10 @@
     "yargs-parser": "^13.0.0"
   },
   "bin": {
-    "envigentor": "node bin/entry.js"
+    "envigenter": "node bin/entry.js"
   },
   "scripts":{
     "clean": "node bin/clean.js",
-    "envigentor": "node bin/entry.js"
+    "envigenter": "node bin/entry.js"
   }
 }

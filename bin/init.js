@@ -1,7 +1,7 @@
 const { exec, installGlobalPackage } = require('./lib')
 const fs = require('fs')
 
-const runHygenEnvigentor = (path, action)=>{
+const runHygenEnvigenter = (path, action)=>{
     const notExists = path=>{
         if (fs.existsSync(path)){
             console.error(`Skipped: ${path}`)
@@ -10,19 +10,19 @@ const runHygenEnvigentor = (path, action)=>{
         return true
     }
     if (notExists(path)){
-        exec(`cross-env HYGEN_OVERWRITE=1 hygen envigentor ${action}`)
+        exec(`cross-env HYGEN_OVERWRITE=1 hygen envigenter ${action}`)
     }
 }
 
 const defaultInstaller = (obj=>{
     const installProfile = profile=>{
-        runHygenEnvigentor(`env/${profile}.env.yml`, `profile --profile ${profile}`)
+        runHygenEnvigenter(`env/${profile}.env.yml`, `profile --profile ${profile}`)
     }
     const installTemplate = ()=>{
-        runHygenEnvigentor(`env/_template.yml`, 'template')
+        runHygenEnvigenter(`env/_template.yml`, 'template')
     }
     const installHygen = ()=>{
-        runHygenEnvigentor('_templates/env/default/hello.ejs.t', 'hygen')
+        runHygenEnvigenter('_templates/env/default/hello.ejs.t', 'hygen')
     }
     obj.install = profile=>{
         installTemplate()
@@ -34,13 +34,13 @@ const defaultInstaller = (obj=>{
 
 const extraInstaller = (obj=>{
     const installProfile = profile=>{
-        runHygenEnvigentor(`env/extra/${profile}.env.yml`, `extra-profile --profile ${profile}`)
+        runHygenEnvigenter(`env/extra/${profile}.env.yml`, `extra-profile --profile ${profile}`)
     }
     const installTemplate = profile=>{
-        runHygenEnvigentor(`env/extra/_template.${profile}.yml`, `extra-template --profile ${profile}`)
+        runHygenEnvigenter(`env/extra/_template.${profile}.yml`, `extra-template --profile ${profile}`)
     }
     const installHygen = profile=>{
-        runHygenEnvigentor(`_templates/env/extra-${profile}/hello.ejs.t`, `extra-hygen --profile ${profile}`)
+        runHygenEnvigenter(`_templates/env/extra-${profile}/hello.ejs.t`, `extra-hygen --profile ${profile}`)
     }
     obj.install = profile=>{
         installProfile(profile)
@@ -52,7 +52,7 @@ const extraInstaller = (obj=>{
     
 module.exports = (initType, profile)=>{
     installGlobalPackage('hygen hygen-add cross-env')
-    exec('hygen-add envigentor')
+    exec('hygen-add envigenter')
     defaultInstaller.install(profile)
     if (initType === 'extra'){
         extraInstaller.install(profile)
