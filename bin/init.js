@@ -52,7 +52,7 @@ const extraInstaller = (obj=>{
     
 module.exports = (initType, profile)=>{
     installGlobalPackage('hygen hygen-add cross-env')
-   // exec('hygen-add envigentor')
+    exec('hygen-add envigentor')
     defaultInstaller.install(profile)
     if (initType === 'extra'){
         extraInstaller.install(profile)

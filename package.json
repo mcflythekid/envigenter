@@ -1,6 +1,6 @@
 {
   "name": "envigenter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate environment for project",
   "main": "index.js",
   "repository": "git@github.com:mcflythekid/envigentor.git",
