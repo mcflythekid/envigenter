@@ -14,7 +14,7 @@ const loadYml = filePath=>{
 const generateHygenCommand = (ymlObject, hygenAction)=>{
     let command = `cross-env HYGEN_OVERWRITE=1 hygen env ${hygenAction}`
     extractObject(ymlObject).forEach(obj=>{
-        command += ` --${obj.key} ${obj.val}`
+        command += ` --${obj.key} "${obj.val}"`
     })
     return command
 }

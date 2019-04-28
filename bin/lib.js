@@ -17,7 +17,7 @@ exports.installGlobalPackage = packages=>{
  * Execute shell command, exit process if has error
  */
 exports.exec = cmd=>{
-    console.log(`Executing: '${cmd}'`)
+    console.log(`Executing: ${cmd}`)
     const code = shell.exec(cmd).code
     if (code !== 0) {
         shell.echo(`Execution failed with code: ${code}`)
