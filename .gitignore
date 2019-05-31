@@ -1,11 +1,8 @@
 /node_modules
-
 /env
-
 /_templates/generator
 /_templates/envigenter
 /_templates/env
-
 /tmp
-
 yarn-error.log
+/.history
