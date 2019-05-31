@@ -5,20 +5,28 @@ const { extractObject, loadYml } = require('./lib')
 const validateConfig = (yml, sampleYml)=>{
 
     const sort = item=>{
-        return item.key;
+        return item.key
     }
 
-    arrayToCheck = extractObject(loadYml(yml)).map(sort).sort()
-    sampleArray = extractObject(loadYml(sampleYml)).map(sort).sort()
+    const diff = (a, b)=>{
+        return _.differenceWith(a, b, _.isEqual)
+    }
 
+    const arrayToCheck = extractObject(loadYml(yml)).map(sort).sort()
+    const sampleArray = extractObject(loadYml(sampleYml)).map(sort).sort()
 
-
+    const missing = diff(sampleArray, arrayToCheck)
+    const redundant = diff(arrayToCheck, sampleArray)
+    
     if (!_.isEqual(arrayToCheck, sampleArray)){
-        console.error(`Please check the following emvironment ${yml}`)
-        console.log("Sample:")
-        console.log(sampleArray)
-        console.log("Actual:")
-        console.error(arrayToCheck)
+        if (missing.length){
+            console.error(`Missing environment variable in ${yml}`)
+            console.log(missing)
+        }
+        if (redundant.length){
+            console.error(`Redundant environment variable in ${yml}`)
+            console.log(redundant)
+        }
         process.exit(2)
     } 
 }
