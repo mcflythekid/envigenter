@@ -11,16 +11,16 @@ const validateConfig = (yml, sampleYml)=>{
     arrayToCheck = extractObject(loadYml(yml)).map(sort).sort()
     sampleArray = extractObject(loadYml(sampleYml)).map(sort).sort()
 
-    console.log(arrayToCheck)
-    console.log(sampleArray)
+
 
     if (!_.isEqual(arrayToCheck, sampleArray)){
-        console.error(`Please check emvironment ${yml}`)
+        console.error(`Please check the following emvironment ${yml}`)
+        console.log("Sample:")
+        console.log(sampleArray)
+        console.log("Actual:")
+        console.error(arrayToCheck)
         process.exit(2)
-    }
-
-
- 
+    } 
 }
 
 module.exports = profile=>{
