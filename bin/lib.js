@@ -4,6 +4,15 @@ const yargs = require('yargs-parser')
 const yaml = require('js-yaml')
 const fs = require('fs')
 
+const exec = cmd=>{
+    console.log(`Executing: ${cmd}`)
+    const code = shell.exec(cmd).code
+    if (code !== 0) {
+        shell.echo(`Execution failed with code: ${code}`)
+        shell.exit(code)
+    }
+}
+
 /**
  * Install package globally
  */
@@ -18,14 +27,7 @@ exports.installGlobalPackage = packages=>{
 /**
  * Execute shell command, exit process if has error
  */
-exports.exec = cmd=>{
-    console.log(`Executing: ${cmd}`)
-    const code = shell.exec(cmd).code
-    if (code !== 0) {
-        shell.echo(`Execution failed with code: ${code}`)
-        shell.exit(code)
-    }
-}
+exports.exec = exec
 
 /**
  * Convert object to array
