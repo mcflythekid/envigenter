@@ -3,7 +3,6 @@
 const yargs = require('yargs-parser')
 const init = require('./init')
 const generate = require('./generate')
-const validate = require('./validate')
 const packageJson = require('../package.json')
 
 const { _ } = yargs(process.argv.slice(2))
@@ -18,7 +17,6 @@ const help = ()=>{
 
 switch(_.length){
     case 1:
-        validate(_[0])
         generate(_[0])
         break
     case 2:
